@@ -1,17 +1,21 @@
 int strstr(final String haystack, final String needle) {
-	int startIndex = 0;
-  int lenOfNeedle = needle.length();
-  for (int i = 0; i <= haystack.length() - needle.length(); i++) {
-		startIndex = i;
-    int j = 0;
-    while (i < haystack.length() && j < needle.length() && haystack.charAt(i) == needle.charAt(j)) {
-			i++;
-      j++;
+    int[] f = new int[needle.length()];
+    for(int i = 1 , k = 0 ; i < needle.length() ; i++){
+        while(k > 0 && needle.charAt(i) != needle.charAt(k))
+            k = f[k-1];
+        if(needle.charAt(i) == needle.charAt(k))
+            k++;
+        f[i] = k;
     }
-    if (j == lenOfNeedle) {
-			return startIndex;
+    for(int i = 0 , k = 0 ; i < haystack.length() ; i++){
+        while(k>0 && haystack.charAt(i) != needle.charAt(k))
+            k = f[k-1];
+        if(haystack.charAt(i) == needle.charAt(k)){
+            k++;
+        }
+        if(k == needle.length()){
+            return i - k + 1;
+        }
     }
-    i = startIndex;
-  }
-  return -1;
+    return -1;
 }
