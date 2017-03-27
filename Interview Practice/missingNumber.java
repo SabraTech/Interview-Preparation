@@ -8,3 +8,15 @@ int missingNumber(int[] arr) {
     }
     return i;
 }
+
+// OR
+
+int missingNumber(int[] arr) {
+    int len = arr.length;
+    int expectedSum = (len + 1) / 2 * len;
+    int actualSum = 0;
+    for(int i = 0; i < arr.length; i++){
+        actualSum += arr[i];
+    }
+    return expectedSum - actualSum;
+}
