@@ -1,7 +1,5 @@
 boolean isInfiniteProcess(int a, int b) {
-    if(b-a > 1 && a * 2 != b){
-        return false;
-    }else if(a == b){
+    if(b >= a && (b-a) % 2 == 0){
         return false;
     }else{
         return true;
