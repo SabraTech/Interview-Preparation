@@ -20,3 +20,22 @@ int pairsSum(int[] a) {
     return count;
 
 }
+
+// Or
+
+int pairsSum(int[] a) {
+    int numOfPairs = 0;
+    Arrays.sort(a);
+    for(int i = 0 ; i < a.length ; i ++){
+        int j = 0 , l = 0;
+        while(j < i && l < a.length){
+            if(a[l] < a[i] + a[j])l++;
+            else if(a[l] > a[i]+a[j])j++;
+            else{
+                numOfPairs++;
+                j++;
+            }
+        }
+    }
+    return numOfPairs;
+}
