@@ -12,6 +12,7 @@ int productExceptSelf(int[] nums, int m) {
     }
     for(int i = 0; i<nums.length;i++){
         g += (prodA[i] * prodB[i])% m;
+        g %= m;
     }
     return g % m;
 }
